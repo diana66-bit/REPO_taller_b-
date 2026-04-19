@@ -37,9 +37,7 @@ namespace persistencia01
 			
 			Console.Write("Press any key to continue . . . ");
 			Console.ReadKey(true);
-		}
-	}
-}
+			
 			string dir = "./";
 
             Console.WriteLine("Desafío 1...");
