@@ -42,7 +42,6 @@ namespace persistencia01
 }
 			string dir = "./";
 
-            // Desafío 1
             Console.WriteLine("Desafío 1...");
             string entrada = "usuario;clave123";
             string[] partes = entrada.Split(';');
@@ -56,7 +55,6 @@ namespace persistencia01
                 Console.WriteLine("Aviso de seguridad generado.");
             }
 
-            // Desafío 2: copiar archivo byte a byte con FileStream 
             string origenImg = Path.Combine(dir, "imagen.JPG");
             string destinoImg = Path.Combine(dir, "respaldo.JPG");
 
@@ -76,7 +74,6 @@ namespace persistencia01
                 }
             }
 
-            // Desafío 3: Buscar y borrar archivos mayores a 5 KB
             DirectoryInfo info = new DirectoryInfo(dir);
             FileInfo[] lista = info.GetFiles();
 
@@ -85,7 +82,6 @@ namespace persistencia01
                 if (archi.Length > 5120)
                 {
                     Console.WriteLine("Activando archivo pesado: " + archi.Name);
-                    // archi.Delete(); // Descomenta esta línea si realmente quieres borrar el archivo
                 }
             }
 
