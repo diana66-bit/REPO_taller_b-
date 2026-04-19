@@ -35,9 +35,6 @@ namespace persistencia01
 			
 			// TODO: Implement Functionality Here
 			
-			Console.Write("Press any key to continue . . . ");
-			Console.ReadKey(true);
-			
 			string dir = "./";
 
             Console.WriteLine("Desafío 1...");
