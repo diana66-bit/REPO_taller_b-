@@ -40,3 +40,57 @@ namespace persistencia01
 		}
 	}
 }
+			string dir = "./";
+
+            // Desafío 1
+            Console.WriteLine("Desafío 1...");
+            string entrada = "usuario;clave123";
+            string[] partes = entrada.Split(';');
+
+            if (partes.Length > 1 && partes[1].Contains("123"))
+            {
+                using (StreamWriter sw = new StreamWriter(Path.Combine(dir, "seguridad.txt")))
+                {
+                    sw.WriteLine("Clave Débil detectada");
+                }
+                Console.WriteLine("Aviso de seguridad generado.");
+            }
+
+            // Desafío 2: copiar archivo byte a byte con FileStream 
+            string origenImg = Path.Combine(dir, "imagen.JPG");
+            string destinoImg = Path.Combine(dir, "respaldo.JPG");
+
+            if (!File.Exists(origenImg))
+            {
+                File.WriteAllText(origenImg, "bin");
+            }
+
+            using (FileStream fs1 = new FileStream(origenImg, FileMode.Open))
+            using (FileStream fs2 = new FileStream(destinoImg, FileMode.Create))
+            {
+                byte[] buffer = new byte[1024];
+                int bytesLeidos;
+                while ((bytesLeidos = fs1.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    fs2.Write(buffer, 0, bytesLeidos);
+                }
+            }
+
+            // Desafío 3: Buscar y borrar archivos mayores a 5 KB
+            DirectoryInfo info = new DirectoryInfo(dir);
+            FileInfo[] lista = info.GetFiles();
+
+            foreach (FileInfo archi in lista)
+            {
+                if (archi.Length > 5120)
+                {
+                    Console.WriteLine("Activando archivo pesado: " + archi.Name);
+                    // archi.Delete(); // Descomenta esta línea si realmente quieres borrar el archivo
+                }
+            }
+
+            Console.WriteLine("Proceso finalizado.");
+            Console.ReadKey(true);
+        }
+    }
+}
